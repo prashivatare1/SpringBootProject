@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.resort.management.Demo.model.Counter;
 import com.resort.management.Demo.model.Customer;
 
 
@@ -44,7 +45,7 @@ public class CustomerDAO {
 					.setParameter("pass", password)
 					.getResultList();
 			
-			//System.out.println(logincust);
+		
 					
 			
 			
@@ -60,6 +61,26 @@ public class CustomerDAO {
 	public void saveCustomer(Customer customer)
 	{
 		try {
+			
+			Counter ctr = entityManager.find(Counter.class, "customer");
+			Counter ctrr = entityManager.find(Counter.class, "cust_add");
+			
+			String cust =ctr.getIntial() + ctr.incrementNextValue();
+			String add = ctrr.getIntial() + ctrr.incrementNextValue();
+			
+			customer.setCustomerId(cust);
+			customer.setFirstName(customer.getFirstName());
+			customer.setMiddelName(customer.getMiddelName());
+			customer.setLastName(customer.getLastName());
+			customer.setMobile(customer.getMobile());
+			customer.setGender(customer.getGender());
+			customer.setEmailId(customer.getEmailId());
+			customer.setPassword(customer.getPassword());
+			customer.setAddId(add);
+			customer.setAddress(customer.getAddress());
+			customer.setCity(customer.getCity());
+			customer.setZip(customer.getZip());
+			
 			entityManager.persist(customer);
 			
 		}

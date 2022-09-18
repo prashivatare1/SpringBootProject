@@ -38,4 +38,11 @@ public class BookingRestController {
 		//System.out.println("Called");
 		return bookingDAO.getRoomBooking(cdate);
 	}
+	
+	@PostMapping(value = "/SaveBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void saveBooking(@RequestBody Booking booking)
+	{
+		//System.out.println("Called");
+		bookingDAO.saveBooking(booking);
+	}
 }

@@ -43,7 +43,7 @@ public class CustomerRestController {
 	@PostMapping(value = "/logincustomer",consumes = MediaType.APPLICATION_JSON_VALUE )
 	public Collection<Customer> saveLoginCustomer(@RequestBody Customer customer)
 	{
-	
+		System.out.println("CustId:"+customer.getEmailId());
 		return customerDAO.getLoginCustomer(customer);
 		
 		

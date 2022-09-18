@@ -17,34 +17,48 @@ public class Booking implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	String BookingId;
-	String RoomId;
+	String Id;
 	String CustomerId;
-	Date checkin;
-	Date checkout;
+	String checkin;
+	String checkout;
+	Long cost;
+	
+	public String getBookingId() {
+		return BookingId;
+	}
+	@Id
+	public void setBookingId(String bookingId) {
+		BookingId = bookingId;
+	}
+	@Override
+	public String toString() {
+		return "Booking [BookingId=" + BookingId + ", Id=" + Id + ", CustomerId=" + CustomerId + ", checkin=" + checkin
+				+ ", checkout=" + checkout + ", cost=" + cost + "]";
+	}
+	
+	
 	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Booking(String bookingId, String roomId, String customerId, Date checkin, Date checkout) {
+	
+	
+	
+	
+	public Booking(String bookingId, String id, String customerId, String checkin, String checkout, Long cost) {
 		super();
 		BookingId = bookingId;
-		RoomId = roomId;
+		Id = id;
 		CustomerId = customerId;
 		this.checkin = checkin;
 		this.checkout = checkout;
+		this.cost = cost;
 	}
-	@Id
-	public String getBookingId() {
-		return BookingId;
+	public String getId() {
+		return Id;
 	}
-	public void setBookingId(String bookingId) {
-		BookingId = bookingId;
-	}
-	public String getRoomId() {
-		return RoomId;
-	}
-	public void setRoomId(String roomId) {
-		RoomId = roomId;
+	public void setId(String id) {
+		Id = id;
 	}
 	public String getCustomerId() {
 		return CustomerId;
@@ -52,18 +66,31 @@ public class Booking implements Serializable {
 	public void setCustomerId(String customerId) {
 		CustomerId = customerId;
 	}
-	public Date getCheckin() {
+	public String getCheckin() {
 		return checkin;
 	}
-	public void setCheckin(Date checkin) {
+	public void setCheckin(String checkin) {
 		this.checkin = checkin;
 	}
-	public Date getCheckout() {
+	public String getCheckout() {
 		return checkout;
 	}
-	public void setCheckout(Date checkout) {
+	public void setCheckout(String checkout) {
 		this.checkout = checkout;
 	}
+	public Long getCost() {
+		return cost;
+	}
+	public void setCost(Long cost) {
+		this.cost = cost;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
+
+	
 	
 	
 }

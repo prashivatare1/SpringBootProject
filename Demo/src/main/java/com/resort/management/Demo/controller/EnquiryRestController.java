@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,5 +34,12 @@ public class EnquiryRestController {
 	{
 		enquirydao.saveEnquiry(enquiry);
 		
+	}
+	
+	@GetMapping(value="/findbyname/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Enquiry getProductName(@PathVariable("id") String prodid)
+	{
+		return enquirydao.getEnquirybyId(prodid);
+		 
 	}
 }

@@ -43,5 +43,11 @@ public class EnquiryDAO {
 				throw new RuntimeException(e);
 		}
 	}
+	
+	public Enquiry getEnquirybyId(String id) 
+	{
+		Enquiry enquiry = entityManager.find(Enquiry.class,id);
+		return enquiry;
+	} 
 
 }

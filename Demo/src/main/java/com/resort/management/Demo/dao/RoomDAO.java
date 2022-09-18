@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-
+import com.resort.management.Demo.model.Counter;
 import com.resort.management.Demo.model.Room;
 
 @Repository
@@ -43,7 +43,7 @@ try
 {
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost/xe", "pradyumna", "Prashivatare");
 	Statement stmt = con.createStatement();
-	ResultSet rs = stmt.executeQuery("select count(roomid) from room");
+	ResultSet rs = stmt.executeQuery("select count(id) from room");
 	while(rs.next())
 	abc= rs.getInt(1);
 	rs.close();
@@ -81,6 +81,16 @@ catch(Exception e)
 public void saveRoom(Room room)
 {
 	try {
+		Counter ctr =entityManager.find(Counter.class, "room");
+		String cust =ctr.getIntial() +  ctr.incrementNextValue();
+		
+		room.setId(cust);
+		room.setRoomType(room.getRoomType());
+		room.setDescription(room.getDescription());
+		room.setChild(room.getChild());
+		room.setAdluts(room.getAdluts());
+		room.setPrice(room.getPrice());
+		room.setRoomPhotos(room.getRoomPhotos());
 		entityManager.persist(room);
 		
 	}
